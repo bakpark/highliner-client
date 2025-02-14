@@ -17,19 +17,19 @@ data class CreatePageRequest(
             if (random < 5) {
                 return CreatePageRequest(
                     url = "https://public.kr",
-                    title = "public page",
+                    title = "public page $repeat",
                     visibility = "public"
                 )
             } else if (random < 80) {
                 return CreatePageRequest(
                     url = "https://private.kr",
-                    title = "private page",
+                    title = "private page $repeat",
                     visibility = "private"
                 )
             } else {
                 return CreatePageRequest(
                     url = "https://mentioned.kr",
-                    title = "mentioned page",
+                    title = "mentioned page $repeat",
                     mentions = users.filter { it.userId != userId }
                         .map { it.username }
                         .asSequence().shuffled()
