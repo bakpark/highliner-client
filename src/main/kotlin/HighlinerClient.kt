@@ -3,6 +3,7 @@ package com.example
 import com.google.gson.Gson
 import kotlinx.coroutines.coroutineScope
 import okhttp3.OkHttpClient
+import kotlin.random.Random
 
 class HighlinerClient(
     private val instanceId: Int,
@@ -38,7 +39,7 @@ class HighlinerClient(
                 }
 
                 // (3) 하이라이트 30건 생성 (POST /api/pages/{pageId}/highlights)
-                repeat(30) { highlightRepeat ->
+                repeat(Random.nextInt(30)+1) { highlightRepeat ->
                     val highlightRequestBody = CreateHighlightRequest(
                         text = "$instanceId-$pageRepeat-$highlightRepeat highlighted",
                         color = "#000000"

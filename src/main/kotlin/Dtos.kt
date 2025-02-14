@@ -30,7 +30,10 @@ data class CreatePageRequest(
                 return CreatePageRequest(
                     url = "https://mentioned.kr",
                     title = "mentioned page",
-                    mentions = users.filter { it.userId != userId }.map { it.username }.take(5),
+                    mentions = users.filter { it.userId != userId }
+                        .map { it.username }
+                        .asSequence().shuffled()
+                        .take(Random.nextInt(5)+1).toList(),
                     visibility = "mentioned"
                 )
             }
